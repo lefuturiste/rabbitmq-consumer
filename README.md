@@ -21,7 +21,7 @@ require 'vendor/autoload.php';
 
 $connection = new \PhpAmqpLib\Connection\AMQPStreamConnection("localhost", 5672, 'username', 'password', 'virtualhost');
 $client = new \Lefuturiste\RabbitMQConsumer\Client($connection);
-$client->addListener('my_queue', function(array $message){
+$client->addListener('my_queue', function(array $message, $rootValue){
     var_dump($message);
     echo "\n";
 });

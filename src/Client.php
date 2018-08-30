@@ -23,11 +23,23 @@ class Client
      */
     private $exchange;
 
+    private $rootValue = null;
+
     public function __construct(AMQPStreamConnection $connexion, $exchange = 'router')
     {
         $this->connexion = $connexion;
         $this->exchange = $exchange;
         $this->channel = $this->connexion->channel();
+    }
+
+    /**
+     * Set the root value
+     *
+     * @param $rootValue mixed
+     */
+    public function setRootValue($rootValue): void
+    {
+        $this->rootValue = $rootValue;
     }
 
     /**
@@ -51,7 +63,7 @@ class Client
             function (AMQPMessage $message) use ($callback) {
                 echo "\n--------\n";
                 echo "Received message...";
-                call_user_func($callback, json_decode($message->body, 1));
+                call_user_func($callback, json_decode($message->body, 1), $this->rootValue);
                 echo "\n--------\n";
                 $message->delivery_info['channel']->basic_ack($message->delivery_info['delivery_tag']);
                 if ($message->body === 'quit') {
@@ -84,4 +96,3 @@ class Client
         return $this->channel;
     }
 }
-

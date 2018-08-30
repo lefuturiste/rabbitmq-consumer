@@ -1,0 +1,23 @@
+{
+    "name": "lefuturiste/rabbitmq-consumer",
+    "description": "The simplest way to consume RabbitMQ messages",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lefuturiste",
+            "email": "contact@lefuturiste.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Lefuturiste\\RabbitMQConsumer\\": "src"
+        }
+    },
+    "require": {
+        "php-amqplib/php-amqplib": "^2.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.3"
+    }
+}

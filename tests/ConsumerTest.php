@@ -12,7 +12,7 @@ class ConsumerTest extends TestCase {
 	public function testPublish()
 	{
 		$client = $this->getClient();
-    $client->addListener('my_queue', function(array $message){
+    $client->addListener('my_event', function(array $message){
         var_dump($message);
         echo "\n";
     });

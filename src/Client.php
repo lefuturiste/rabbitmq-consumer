@@ -48,6 +48,7 @@ class Client
         $this->connexion = $connexion;
         $this->exchange = $exchange;
         $this->channel = $this->connexion->channel();
+        $this->queue = $queue;
     }
 
     /**

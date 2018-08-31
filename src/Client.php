@@ -71,7 +71,7 @@ class Client
         $this->listeners[$event] = $callback;
     }
 
-    public function onEvent(string $event, array $body, callable $callback): void
+    public function onEvent(string $event, $body, callable $callback): void
     {
         echo "\n--------\n";
         echo "Received message...";
